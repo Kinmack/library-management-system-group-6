@@ -9,6 +9,3 @@ A web-based Library Management System built with PHP and MySQL on XAMPP. Librari
 ## Technologies Used
 - PHP & MySQL (XAMPP)
 - HTML, CSS, JavaScript
-
-## Contributors
-
