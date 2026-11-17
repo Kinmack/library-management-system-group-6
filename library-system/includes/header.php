@@ -17,7 +17,7 @@ $pageTitle = $pageTitle ?? 'Library Desk';
 		<div class="notice notice-<?= e($flash['type']) ?>" role="status"><?= e($flash['message']) ?></div>
 	<?php endif; ?>
 <?php
-// Shared header for the Library Management System
+
 
 if (!defined('BASE_URL')) {
     define('BASE_URL', '/library-system');
