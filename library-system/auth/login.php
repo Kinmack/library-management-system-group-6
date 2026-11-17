@@ -68,3 +68,42 @@ require __DIR__ . '/../includes/header.php';
 	</form>
 </section>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
+<?php
+$currentPage = $currentPage ?? '';
+?>
+
+<nav class="navbar">
+
+    <a href="<?= BASE_URL ?>/dashboard/index.php"
+       class="<?= $currentPage === 'dashboard' ? 'active' : '' ?>">
+        Dashboard
+    </a>
+
+    <a href="<?= BASE_URL ?>/books/index.php"
+       class="<?= $currentPage === 'books' ? 'active' : '' ?>">
+        Books
+    </a>
+
+    <a href="<?= BASE_URL ?>/members/index.php"
+       class="<?= $currentPage === 'members' ? 'active' : '' ?>">
+        Members
+    </a>
+
+    <a href="<?= BASE_URL ?>/loans/index.php"
+       class="<?= $currentPage === 'loans' ? 'active' : '' ?>">
+        Loans
+    </a>
+
+    <a href="<?= BASE_URL ?>/authors/index.php">
+        Authors
+    </a>
+
+    <a href="<?= BASE_URL ?>/categories/index.php">
+        Categories
+    </a>
+
+    <a href="<?= BASE_URL ?>/auth/logout.php">
+        Logout
+    </a>
+
+</nav>
