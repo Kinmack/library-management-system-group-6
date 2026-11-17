@@ -25,3 +25,82 @@ require __DIR__ . '/../includes/header.php';
 <?php endforeach; ?>
 </tbody></table></div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
+<?php
+
+$pageTitle = "Manage Books";
+$currentPage = "books";
+
+require_once "../includes/header.php";
+require_once "../includes/navbar.php";
+
+?>
+
+<main class="container">
+
+    <h2 class="page-title">Book Management</h2>
+
+    <p style="color:#666; margin-bottom:20px;">
+        View and manage books registered in the library.
+    </p>
+
+    <div style="margin-bottom:20px;">
+        <a href="create.php" class="btn btn-primary">
+            + Add New Book
+        </a>
+    </div>
+
+    <!-- Search Section -->
+
+    <form class="search-bar" method="GET" action="">
+
+        <input
+            type="search"
+            name="search"
+            placeholder="Search by book title or ISBN"
+        >
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+
+    </form>
+
+    <!-- Books Table -->
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Publisher</th>
+                    <th>Year</th>
+                    <th>Total Copies</th>
+                    <th>Available Copies</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td colspan="9"
+                        style="text-align:center; padding:30px;">
+                        Book records will appear here
+                        after database integration.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+<?php require_once "../includes/footer.php"; ?>
