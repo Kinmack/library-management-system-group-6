@@ -7,13 +7,13 @@
     --line: #e2e8e4;
     --paper: #f5f7f4;
     --surface: #ffffff;
-    --green: #176b58;
+    --green: #Oa7a42;
     --green-dark: #124d42;
     --green-soft: #e6f2ed;
     --orange: #bb5c35;
     --blue: #47727d;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--ink);
     background: var(--paper);
 }
