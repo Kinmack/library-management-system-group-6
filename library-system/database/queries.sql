@@ -88,14 +88,31 @@ LEFT JOIN loans AS l ON l.book_id = b.book_id
 GROUP BY c.category_id, c.cat_name
 ORDER BY total_loans DESC, c.cat_name;
 
--- Inventory summary by category.
-SELECT
-    c.category_id,
-    c.cat_name AS category,
-    COUNT(b.book_id) AS title_count,
-    COALESCE(SUM(b.total_copies), 0) AS total_copies,
-    COALESCE(SUM(b.available_copies), 0) AS available_copies
-FROM categories AS c
-LEFT JOIN books AS b ON b.category_id = c.category_id
-GROUP BY c.category_id, c.cat_name
-ORDER BY c.cat_name;
+-- Inventory summary by category, with a grand total row at the bottom.
+SELECT category, titles, total_copies, available_copies, on_loan, pct_available
+FROM (
+    SELECT
+        0 AS sort_order,
+        c.cat_name AS category,
+        COUNT(b.book_id) AS titles,
+        COALESCE(SUM(b.total_copies), 0) AS total_copies,
+        COALESCE(SUM(b.available_copies), 0) AS available_copies,
+        COALESCE(SUM(b.total_copies - b.available_copies), 0) AS on_loan,
+        COALESCE(ROUND(100 * SUM(b.available_copies) / NULLIF(SUM(b.total_copies), 0), 1), 0) AS pct_available
+    FROM categories AS c
+    LEFT JOIN books AS b ON b.category_id = c.category_id
+    GROUP BY c.category_id, c.cat_name
+
+    UNION ALL
+
+    SELECT
+        1,
+        'All categories',
+        COUNT(*),
+        COALESCE(SUM(total_copies), 0),
+        COALESCE(SUM(available_copies), 0),
+        COALESCE(SUM(total_copies - available_copies), 0),
+        COALESCE(ROUND(100 * SUM(available_copies) / NULLIF(SUM(total_copies), 0), 1), 0)
+    FROM books
+) AS summary
+ORDER BY sort_order, category;
