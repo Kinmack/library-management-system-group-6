@@ -11,4 +11,4 @@ A web-based Library Management System built with PHP and MySQL on XAMPP. Librari
 - HTML, CSS, JavaScript
 
 ## Contributors
-- Amar Ibrahim
+
