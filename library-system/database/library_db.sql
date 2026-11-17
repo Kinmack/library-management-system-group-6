@@ -48,18 +48,23 @@ CREATE TABLE IF NOT EXISTS users (
     full_name VARCHAR(150) NOT NULL,
     role ENUM('admin', 'librarian') NOT NULL DEFAULT 'librarian'
 );
-
 CREATE TABLE IF NOT EXISTS loans (
     loan_id INT AUTO_INCREMENT PRIMARY KEY,
-    members_id INT NOT NULL,
+    member_id INT NOT NULL,
     book_id INT NOT NULL,
     date_issued DATE NOT NULL DEFAULT (CURRENT_DATE),
-    due_date DATE NOT NULL,
+    due_date DATE NOT NULL DEFAULT (DATE_ADD(CURRENT_DATE, INTERVAL 14 DAY)),
     date_returned DATE DEFAULT NULL,
-    CONSTRAINT fk_loans_member FOREIGN KEY (members_id)
-        REFERENCES members(member_id) ON DELETE RESTRICT,
+    -- 1 while the loan is unreturned, NULL once returned (used to block duplicate active loans)
+    active_flag TINYINT AS (IF(date_returned IS NULL, 1, NULL)) VIRTUAL,
+
+    CONSTRAINT fk_loans_member FOREIGN KEY (member_id)
+        REFERENCES members(member_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT fk_loans_book FOREIGN KEY (book_id)
-        REFERENCES books(book_id) ON DELETE RESTRICT,
-    CHECK (due_date >= date_issued),
-    CHECK (date_returned IS NULL OR date_returned >= date_issued)
-);
+        REFERENCES books(book_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT chk_loans_due CHECK (due_date >= date_issued),
+    CONSTRAINT chk_loans_returned CHECK (date_returned IS NULL OR date_returned >= date_issued),
+
+    CONSTRAINT uq_loans_active UNIQUE (member_id, book_id, active_flag),
+    INDEX idx_loans_due_returned (due_date, date_returned)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
