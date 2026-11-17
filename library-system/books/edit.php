@@ -1,3 +1,4 @@
+
 <?php
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth_check.php';
@@ -54,3 +55,97 @@ require __DIR__ . '/../includes/header.php';
 <label>Publisher<input name="publisher" value="<?= e($book['publisher'] ?? '') ?>"></label><label>Year published<input type="number" name="year_published" min="1000" max="2155" value="<?= e($book['year_published'] ?? '') ?>"></label>
 <label>Total copies<input type="number" name="total_copies" min="1" required value="<?= e($book['total_copies']) ?>"></label></div><div class="form-actions"><button class="button button-primary" type="submit">Update book</button><a class="button button-secondary" href="<?= e(url('books/index.php')) ?>">Cancel</a></div></form></section>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
+<?php
+
+$pageTitle = "Edit Book";
+$currentPage = "books";
+
+require_once "../includes/header.php";
+require_once "../includes/navbar.php";
+
+?>
+
+<main class="container">
+
+    <h2 class="page-title">Edit Book Details</h2>
+
+    <div class="form-card">
+
+        <form method="POST" action="">
+
+            <div class="form-group">
+                <label>ISBN</label>
+                <input type="text"
+                       name="isbn"
+                       placeholder="Book ISBN"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Book Title</label>
+                <input type="text"
+                       name="title"
+                       placeholder="Book title"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Author</label>
+                <select name="author_id" required>
+                    <option value="">Select Author</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category_id" required>
+                    <option value="">Select Category</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Publisher</label>
+                <input type="text"
+                       name="publisher"
+                       placeholder="Publisher">
+            </div>
+
+            <div class="form-group">
+                <label>Year Published</label>
+                <input type="number"
+                       name="year_published">
+            </div>
+
+            <div class="form-group">
+                <label>Total Copies</label>
+                <input type="number"
+                       name="total_copies"
+                       min="1"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Available Copies</label>
+                <input type="number"
+                       name="available_copies"
+                       min="0"
+                       required>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Update Book
+            </button>
+
+            <a href="index.php"
+               class="btn btn-danger">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</main>
+
+<?php require_once "../includes/footer.php"; ?>
