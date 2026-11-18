@@ -92,31 +92,86 @@ input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px #1
 .auth-form .button { width: 100%; margin-top: 6px; }
 
 @media (max-width: 760px) {
-    .topbar { flex-wrap: wrap; gap: 0 16px; padding: 12px 18px 0; }
-    .brand { height: 38px; }
-    .account { margin-left: auto; }
-    .main-nav { order: 3; width: 100%; height: 42px; justify-content: space-between; gap: 12px; overflow-x: auto; }
-    .main-nav a { font-size: 12px; }
-    .page-shell { width: calc(100% - 36px); padding-top: 30px; }
-    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 24px 0 34px; }
-    .stat { min-height: 128px; padding: 16px; }
-    .stat strong { font-size: 26px; }
-    .auth-layout { min-height: 0; grid-template-columns: 1fr; gap: 20px; padding: 35px 0; }
-    .auth-intro h1 { font-size: 34px; }
-    .auth-intro > p:last-child { font-size: 14px; }
+    .topbar { 
+        flex-wrap: wrap; gap: 0 16px;
+        padding: 12px 18px 0;
+    }
+    .brand {
+        height: 38px;
+    }
+    .account {
+        margin-left: auto;
+    }
+    .main-nav {
+        order: 3; width: 100%;
+        height: 42px; 
+        justify-content: space-between; gap: 12px; 
+        overflow-x: auto;
+    }
+    .main-nav a {
+        font-size: 12px; 
+    }
+    .page-shell {
+        width: calc(100% - 36px);
+        padding-top: 30px; 
+    }
+    .stats-grid { 
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+        gap: 10px; margin: 24px 0 34px;
+    }
+    .stat {
+        min-height: 128px; padding: 16px;
+    }
+    .stat strong { 
+        font-size: 26px;
+    }
+    .auth-layout { 
+        min-height: 0; grid-template-columns: 1fr;
+        gap: 20px; padding: 35px 0; }
+    .auth-intro h1 {
+        font-size: 34px; 
+    }
+    .auth-intro > p:last-child { 
+        font-size: 14px;
+    }
 }
 @media (max-width: 480px) {
-    .topbar { padding-right: 14px; padding-left: 14px; }
-    .brand { font-size: 14px; }
-    .account { gap: 9px; font-size: 11px; }
-    .signout { padding-left: 9px; }
-    .page-shell { width: calc(100% - 28px); }
-    .page-heading { align-items: flex-start; }
-    .page-heading .button { min-height: 36px; padding: 0 10px; font-size: 12px; }
-    .form-grid { grid-template-columns: 1fr; }
-    .form-panel { padding: 19px; }
-    .toolbar { align-items: stretch; flex-direction: column; }
-    .search-form input { width: 100%; }
+    .topbar { 
+        padding-right: 14px;
+             padding-left: 14px;
+            }
+    .brand { 
+        font-size: 14px; }
+    .account { gap: 9px;
+              font-size: 11px; 
+             }
+    .signout {
+        padding-left: 9px;
+    }
+    .page-shell {
+        width: calc(100% - 28px);
+    }
+    .page-heading {
+        align-items: flex-start; 
+    }
+    .page-heading .button {
+        min-height: 36px;
+        padding: 0 10px; 
+        font-size: 12px; 
+    }
+    .form-grid {
+        grid-template-columns: 1fr; 
+    }
+    .form-panel { 
+        padding: 19px;
+    }
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .search-form input {
+        width: 100%;
+    }
 }
 
 .main-nav a[aria-current="page"] { color: #fff; border-color: #9dcbb5; }
@@ -137,16 +192,38 @@ input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px #1
 .toolbar-controls { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
 
 @media (max-width: 900px) {
-    .topbar { gap: 22px; }
-    .main-nav { flex: 1; justify-content: center; gap: 18px; }
-    .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .topbar {
+        gap: 22px;
+    }
+    .main-nav { 
+        flex: 1; justify-content: 
+            center; gap: 18px;
+    }
+    .quick-links { 
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 @media (max-width: 760px) {
-    .topbar { gap: 0 16px; }
-    .main-nav { flex: 0 0 100%; justify-content: flex-start; }
-    .quick-links { margin-top: 24px; }
-    .site-footer-inner { width: calc(100% - 36px); align-items: flex-start; flex-direction: column; justify-content: center; gap: 5px; padding: 14px 0; }
-    .toolbar-controls { justify-content: flex-start; flex-wrap: wrap; }
+    .topbar { 
+        gap: 0 16px; 
+    }
+    .main-nav { 
+        flex: 0 0 100%; justify-content: flex-start;
+    }
+    .quick-links { 
+        margin-top: 24px;
+    }
+    .site-footer-inner {
+        width: calc(100% - 36px);
+        align-items: flex-start; 
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px; padding: 14px 0;
+    }
+    .toolbar-controls { 
+        justify-content: flex-start; 
+        flex-wrap: wrap;
+    }
 }
 @media (max-width: 480px) {
     .quick-links { grid-template-columns: 1fr; gap: 9px; }
